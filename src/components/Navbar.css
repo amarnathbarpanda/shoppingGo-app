@@ -17,6 +17,8 @@
     color: var(--accent-color);
     font-weight: var(--bolder);
     width: 20%;
+    text-shadow: 2px 2px #d9d9d9,
+            -2px -2px  #ffffff;
 }
 
 .menu{
