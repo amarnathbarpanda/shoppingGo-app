@@ -17,8 +17,8 @@ const customStyles = {
     fontSize: '2.5rem'
   },
   cartIcon: {
-    fontSize: '2.3rem'
-  }
+    fontSize: '2.3rem',
+  },
 }
 
 const Navbar = () => {
@@ -31,14 +31,16 @@ const Navbar = () => {
           <Link to="/" >Home</Link>
         </li>
         <li className='menu__item'>
-          <Link to="/" className='menu__item'>Add Product</Link>
+          <Link to="/add-product" className='menu__item'>Add Product</Link>
         </li>
       </ul>
       <div className='others'>
         <PersonOutlineOutlinedIcon titleAccess='David' sx={customStyles.userIcon} />
         <div className='cart'>
-          <Badge sx={customStyles.badgeStyle} className='badge' badgeContent={3} color="error">
+            <Badge sx={customStyles.badgeStyle} className='badge' badgeContent={3} color="error">
+          <Link to="/cart">
             <ShoppingCartOutlinedIcon sx={customStyles.cartIcon} />
+          </Link>
           </Badge>
         </div>
       </div>

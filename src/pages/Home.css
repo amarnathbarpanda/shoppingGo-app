@@ -25,3 +25,15 @@
 }
 
 
+@media (max-width: 1080px) {
+    .home{
+        height: 60vh;
+    }
+    .home__container{
+        flex-direction: column;
+        padding: 2rem;
+    }
+    .left{
+        text-align: center;
+    }
+}
