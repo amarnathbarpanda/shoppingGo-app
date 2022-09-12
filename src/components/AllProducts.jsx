@@ -3,6 +3,8 @@ import CancelIcon from '@mui/icons-material/Cancel';
 
 import './AllProducts.css';
 import CardItem from './CardItem';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProductsData } from '../actions';
 
 const AllProducts = () => {
 
@@ -10,11 +12,20 @@ const AllProducts = () => {
     const [isSorted, setIsSorted] = useState(false);
     const [sortedData, setSortedData] = useState([]);
 
+    const productSelector = useSelector(state=>state.productData);
+
+    const dispatch = useDispatch();
+
     useEffect(() => {
-        fetch('https://my-json-server.typicode.com/amarnathbarpanda/ShoppingGo/products')
-        .then(res =>res.json())
-        .then(data => setProducts(data));
-    }, [products]);
+        dispatch(getProductsData());
+    }, []);
+    
+    useEffect(()=>{
+        setProducts(productSelector);
+        console.log(products);
+    }, [productSelector]);
+
+    useEffect(()=>{ console.log("products updated");},[products, sortedData])
     
     const sortData = (a, b) => {
         if (a.price < b.price) {
@@ -43,10 +54,10 @@ const AllProducts = () => {
                 </span>
             </div>
             <div className="card__container">
-                {!isSorted && products?.map((product, index)=>(
+                {!isSorted && products.length && products?.map((product, index)=>(
                     <CardItem key={index} product={product}/>
                 ))}
-                {isSorted && sortedData?.map((product, index)=>(
+                {isSorted && sortedData.length && sortedData?.map((product, index)=>(
                     <CardItem key={index} product={product}/>
                 ))}
             </div>
