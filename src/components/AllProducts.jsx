@@ -25,7 +25,6 @@ const AllProducts = () => {
         console.log(products);
     }, [productSelector]);
 
-    useEffect(()=>{ console.log("products updated");},[products, sortedData])
     
     const sortData = (a, b) => {
         if (a.price < b.price) {
@@ -37,12 +36,26 @@ const AllProducts = () => {
         return 0;
     }
 
+    const sortDataById = (a, b) => {
+        if (a.id < b.id) {
+            return -1;
+        }
+        if (a.id > b.id) {
+            return 1;
+        }
+        return 0;
+    }
+
     const onSort = () =>{
         if(!isSorted){
             const sortedProducts = products.sort(sortData);
-            setSortedData(sortedProducts);
-            setIsSorted(true);
+            setProducts(sortedProducts);
+        }else{
+            const sortedProducts = products.sort(sortDataById);
+            setProducts(sortedProducts);
         }
+
+        setIsSorted(!isSorted);
     }
 
     return (
@@ -50,14 +63,11 @@ const AllProducts = () => {
             <div className='sort__tag'>
                 <span onClick={()=> onSort()}>
                     Sort by price
-                    {isSorted && <CancelIcon onClick={()=> setIsSorted(false)} sx={{color: "gray", fontSize: '2rem'}}/>}
+                    {isSorted && <CancelIcon sx={{color: "gray", fontSize: '2rem'}}/>}
                 </span>
             </div>
             <div className="card__container">
-                {!isSorted && products.length && products?.map((product, index)=>(
-                    <CardItem key={index} product={product}/>
-                ))}
-                {isSorted && sortedData.length && sortedData?.map((product, index)=>(
+                { products.length && products?.map((product, index)=>(
                     <CardItem key={index} product={product}/>
                 ))}
             </div>

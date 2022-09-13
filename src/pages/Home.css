@@ -12,6 +12,7 @@
     justify-content: space-around; 
     align-items: center; 
 }
+
 .left{
     font-family: var(--font-primary);
 }
@@ -19,13 +20,18 @@
 .left h2{
     font-size: var(--text-heading-big);
 }
+
 .left h3{
     font-size: var(--text-heading);
+    color: gray;
     font-weight: 500;
 }
 
 
 @media (max-width: 1080px) {
+    html{
+        font-size: 55%;
+    }
     .home{
         height: 60vh;
     }

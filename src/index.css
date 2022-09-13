@@ -22,10 +22,6 @@
   --text-heading: 2rem;
   --text-heading-big: 4rem;
   --text-logo: 3rem;
-
-  /* font weight */
-  --bold: 600;
-  --bolder: 700;
 }
 
 html{
