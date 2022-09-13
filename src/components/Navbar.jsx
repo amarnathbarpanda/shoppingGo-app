@@ -36,11 +36,11 @@ const Navbar = () => {
       </ul>
       <div className='others'>
         <PersonOutlineOutlinedIcon titleAccess='David' sx={customStyles.userIcon} />
-        <div className='cart'>
-            <Badge sx={customStyles.badgeStyle} className='badge' badgeContent={3} color="error">
-          <Link to="/cart">
-            <ShoppingCartOutlinedIcon sx={customStyles.cartIcon} />
-          </Link>
+        <div className='cart__icon'>
+          <Badge sx={customStyles.badgeStyle} className='badge' badgeContent={3} color="error">
+            <Link to="/cart">
+              <ShoppingCartOutlinedIcon sx={customStyles.cartIcon} />
+            </Link>
           </Badge>
         </div>
       </div>

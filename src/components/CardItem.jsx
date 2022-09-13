@@ -4,8 +4,27 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Rating from '@mui/material/Rating';
 import { Button } from '@mui/material';
 import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart, getCartData } from '../actions';
 
-const CardItem = ({ product: { id, title, description, image, price, rating: { rate, count }, } }) => {
+const CardItem = ({product}) => {
+    const { id, title, description, image, price, rating: { rate, count }} = product;
+
+    const dispatch = useDispatch();
+
+    const cartData = useSelector(state => state.cart);
+
+    const onAddToCart = (product) =>{
+        // const cartData = JSON.parse(localStorage.getItem('cart')) ?? [];
+
+        // cartData.push(product);
+
+        // localStorage.setItem('cart', JSON.stringify(cartData));
+
+        dispatch(getCartData());
+        dispatch(addToCart(product));
+    }
+
     return (
         <div className='card'>
             <div className="product__image">
@@ -27,10 +46,15 @@ const CardItem = ({ product: { id, title, description, image, price, rating: { r
                 </div>
                 <div className="info__right">
                     <span className="product__desc">
-                        {description}
+                        {description.substr(0, 150)}...
                     </span>
                     <div className="actions">
-                        <Button startIcon={<AddShoppingCartRoundedIcon/>} variant="contained" color="success">Add to Cart</Button>
+                        <Button 
+                            startIcon={<AddShoppingCartRoundedIcon/>} variant="contained" color="success"
+                            onClick={()=> onAddToCart(product)}
+                        >
+                          Add to Cart
+                        </Button>
                         <EditIcon sx={styles.edit} />
                         <DeleteIcon sx={styles.delete} />
                     </div>

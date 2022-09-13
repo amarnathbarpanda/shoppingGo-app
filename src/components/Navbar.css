@@ -45,9 +45,10 @@
     color: var(--font-primary);
     font-weight: 600;
 }
-.cart{
+.cart__icon a{
     list-style: none;
     cursor: pointer;
+    color: var(--font-primary);
 }
 .others{
     width: 10%;

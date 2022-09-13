@@ -40,11 +40,19 @@
 
 .card {
     width: 90%;
-    height: 18rem;
+    height: 20rem;
     display: flex;
     align-items: center;
     justify-content: space-around;
     background: var(--light-gray);
+    transition: all 0.5s;
+}
+
+.card:hover {
+    background: #e5e6e6;
+    box-shadow: 16px 16px 32px #c3c4c4,
+        -16px -16px 32px #ffffff;
+    transform: scale(1.001);
 }
 
 .product__image {
@@ -172,9 +180,11 @@
         align-items: center;
         justify-content: center; */
     }
-    .product__image img{
-        width: 10.5rem;     
+
+    .product__image img {
+        width: 10.5rem;
     }
+
     .product__info {
         width: 100%;
         height: auto;
