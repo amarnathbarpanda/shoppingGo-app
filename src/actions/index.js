@@ -6,6 +6,8 @@ export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const ADD_PRODUCT = 'ADD_PRODUCT';
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 export const GET_CART_DATA = 'GET_CART_DATA';
+export const INCREASE_QUANTITY = 'INCREASE_QUANTITY';
+export const DECREASE_QUANTITY = 'DECREASE_QUANTITY';
 
 //action creators
 
@@ -35,7 +37,21 @@ export const addToCart = (product) =>{
 }
 export const removeFromCart = (id) =>{
     return{
-        type: ADD_TO_CART,
+        type: REMOVE_FROM_CART,
+        payload: id
+    }
+}
+
+export const increaseQty = (id) =>{
+    return{
+        type: INCREASE_QUANTITY,
+        payload: id
+    }
+}
+
+export const decreaseQty = (id) =>{
+    return{
+        type: DECREASE_QUANTITY,
         payload: id
     }
 }

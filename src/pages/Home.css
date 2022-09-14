@@ -10,7 +10,8 @@
     background: var(--light-gray);
     display: flex;
     justify-content: space-around; 
-    align-items: center; 
+    align-items: center;
+    border-radius: 20px;
 }
 
 .left{

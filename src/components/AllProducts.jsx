@@ -5,6 +5,8 @@ import './AllProducts.css';
 import CardItem from './CardItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductsData } from '../actions';
+import { Typography } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const AllProducts = () => {
 
@@ -67,9 +69,9 @@ const AllProducts = () => {
                 </span>
             </div>
             <div className="card__container">
-                { products.length && products?.map((product, index)=>(
+                { products.length > 0 ? (products?.map((product, index)=>(
                     <CardItem key={index} product={product}/>
-                ))}
+                ))): (<CircularProgress sx={{color: 'white'}}/>)}
             </div>
         </div>
     )
