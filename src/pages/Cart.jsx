@@ -28,6 +28,9 @@ const Cart = () => {
         {cartItems.length > 0 ? (cartItems.map(item => (
           <CartItem key = {item.id} item = {item}/>
         ))): (<Typography variant="h4">No item in cart! Please add some items.</Typography>)}
+        <div className="order__total">
+          
+        </div>
       </div>
     </div>
   )

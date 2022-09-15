@@ -8,6 +8,7 @@ export const GET_PRODUCTS = 'GET_PRODUCTS';
 export const GET_CART_DATA = 'GET_CART_DATA';
 export const INCREASE_QUANTITY = 'INCREASE_QUANTITY';
 export const DECREASE_QUANTITY = 'DECREASE_QUANTITY';
+export const GET_CART_TOTAL = 'GET_CART_TOTAL';
 
 //action creators
 

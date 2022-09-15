@@ -14,13 +14,26 @@ export default function reducer(state = initialState, action) {
             }
 
         case ADD_TO_CART: {
+            //if the product already present in the cart then no need to add it just increase its quantity
 
-            const updatedCart = [...state.cart, { ...action.payload, qty: 1 }];
+            const existingProduct = state.cart.find(elem=> elem.id === action.payload.id);
+
+            if(existingProduct){
+                existingProduct.qty++;
+                existingProduct.subtotal = existingProduct.qty * existingProduct.price;
+                localStorage.setItem('cart', JSON.stringify(state.cart));
+                return {
+                    ...state
+                }
+            }
+
+            //if not present then add it to cart
+            const updatedCart = [...state.cart, { ...action.payload, qty: 1, subtotal: action.payload.price }];
 
             localStorage.setItem('cart', JSON.stringify(updatedCart));
             return {
                 ...state,
-                cart: [...state.cart, { ...action.payload, qty: 1 }]
+                cart: [...state.cart, { ...action.payload, qty: 1, subtotal: action.payload.qty * action.payload.price }]
             }
         }
 
@@ -46,10 +59,14 @@ export default function reducer(state = initialState, action) {
         case INCREASE_QUANTITY:
             {
                 const updatedCart = state.cart.map((currProduct => {
-                    if (currProduct.id === action.payload)
+                    if (currProduct.id === action.payload){
+                        const newSubtotal = currProduct.price * (currProduct.qty + 1);
                         return {
-                            ...currProduct, qty: currProduct.qty + 1
+                            ...currProduct,
+                            qty: currProduct.qty + 1,
+                            subtotal: newSubtotal
                         }
+                    }
                     return currProduct;
                 }))
                 localStorage.setItem('cart', JSON.stringify(updatedCart));
@@ -63,7 +80,9 @@ export default function reducer(state = initialState, action) {
                 const updatedCart = state.cart.map((currProduct => {
                     if (currProduct.id === action.payload)
                         return {
-                            ...currProduct, qty: currProduct.qty - 1
+                            ...currProduct, 
+                            qty: currProduct.qty - 1,
+                            subtotal: currProduct.qty * currProduct.price
                         }
                     return currProduct;
                 })).filter((curItem) => {

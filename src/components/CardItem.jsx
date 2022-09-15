@@ -6,6 +6,7 @@ import { Button } from '@mui/material';
 import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, getCartData } from '../actions';
+import { success } from '../utils/Toast';
 
 const CardItem = ({product}) => {
     const { id, title, description, image, price, rating: { rate, count }} = product;
@@ -23,6 +24,7 @@ const CardItem = ({product}) => {
 
         dispatch(getCartData());
         dispatch(addToCart(product));
+        success('Product Added to Cart!')
     }
 
     return (

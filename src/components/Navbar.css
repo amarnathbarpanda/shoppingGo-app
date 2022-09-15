@@ -1,7 +1,6 @@
 .navbar{
     width: 100%;
     max-width: 120rem;
-    margin: 0 auto;
     height: 10vh;
     background: var(--white);
     display: flex;
@@ -9,6 +8,11 @@
     align-items: center;
     font-family: var(--font-primary);
     /* border: 1px solid gray; */
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
 }
 
 .logo{

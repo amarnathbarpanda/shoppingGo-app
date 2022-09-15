@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Slide, ToastContainer } from 'react-toastify';
 import './App.css';
 import { Navbar, Home } from './components';
 import AddProduct from './pages/AddProduct';
@@ -8,6 +9,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <ToastContainer style={{fontSize: '1.6rem'}} transition={Slide} />
         <Navbar />
         <Routes>
           <Route path='/' exact element={<Home/>} />   
