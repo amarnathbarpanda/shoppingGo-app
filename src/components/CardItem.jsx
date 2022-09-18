@@ -36,7 +36,7 @@ const CardItem = ({product}) => {
                 <div className="info__left">
                     <div className="info__text">
                         <span className='product__title'>{title}</span>
-                        <span className='product__price'>₹ {price}</span>
+                        <span className='product__price'>₹ {price}.00</span>
                     </div>
 
                     <div className="ratings">

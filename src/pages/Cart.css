@@ -82,6 +82,11 @@
     font-weight: 500;
 }
 
+.order__total{
+    font-family: var(--font-primary);
+    color: var(--primary-color);
+    font-size: var(--text-primary);
+}
 
 @media (max-width: 1080px) {
     .cart__item{

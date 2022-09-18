@@ -57,4 +57,10 @@ export const decreaseQty = (id) =>{
     }
 }
 
+export const getCartTotal = () =>{
+    return{
+        type: GET_CART_TOTAL
+    }
+}
+
 

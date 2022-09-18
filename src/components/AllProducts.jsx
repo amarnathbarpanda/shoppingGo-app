@@ -4,7 +4,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import './AllProducts.css';
 import CardItem from './CardItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProductsData } from '../actions';
+import { getCartTotal, getProductsData } from '../actions';
 import { Typography } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 
@@ -20,11 +20,11 @@ const AllProducts = () => {
 
     useEffect(() => {
         dispatch(getProductsData());
+        dispatch(getCartTotal());
     }, []);
     
     useEffect(()=>{
         setProducts(productSelector);
-        console.log(products);
     }, [productSelector]);
 
     

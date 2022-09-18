@@ -5,7 +5,7 @@ import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded';
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 import { decreaseQty, increaseQty, removeFromCart } from '../actions';
 import { useDispatch } from 'react-redux';
-import { error } from '../utils/Toast';
+import { success } from '../utils/Toast';
 
 
 const CartItem = ({ item }) => {
@@ -14,7 +14,7 @@ const CartItem = ({ item }) => {
     const dispatch = useDispatch();
     const onDeleteCartItem = (id) =>{
         dispatch(removeFromCart(id));
-        error('Product Removed From Cart!')
+        success('Product Removed From Cart!')
     }
 
     const onIncreaseQuantity = (id) =>{
@@ -39,10 +39,11 @@ const CartItem = ({ item }) => {
             </div>
 
             <div className="cart__item__text">
-                <span>Price Per Unit: </span>₹ {price}
+                <span>Price Per Unit: </span>
+                <div>₹ {price}.00</div>
             </div>
             <div className="cart__item__text">
-                Subtotal: ₹ {subtotal}
+                Subtotal: <div>₹ {subtotal}.00</div>
             </div>
             <div className="delete__btn">
                 <Button variant='text' color="error" onClick={()=> onDeleteCartItem(id)}>
