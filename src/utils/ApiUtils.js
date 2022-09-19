@@ -47,3 +47,21 @@ export const deleteProduct = async (id) => {
         console.log(err);
     }
 }
+export const updateProduct = async (id, product) => {
+
+    const config = {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(product)
+    }
+
+    try {
+        const response = await fetch(`${url}/${id}`, config);
+        return response.json();
+    } catch (err) {
+        console.log(err);
+    }
+}

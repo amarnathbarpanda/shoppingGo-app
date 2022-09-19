@@ -1,4 +1,5 @@
 .add__product {
+    /* box-model */
     width: 100%;
     margin: 0 auto;
     max-width: 120rem;
@@ -11,38 +12,47 @@
 }
 
 .add__product h1 {
+    /* box-model */
+    margin: 1.5rem;
+
+    /* typography */
     text-align: center;
     font-size: var(--text-heading);
     font-family: var(--font-primary);
     color: var(--color-primary);
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin: 1.5rem;
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+    /* box-model */
     padding: 3rem 0;
     background: var(--white);
     width: 60%;
     margin: 0 auto;
     box-shadow: 0px 0px 1px 1px rgb(255, 255, 255), 0px 0px 1px 1px rgb(44, 44, 44);
+
+    /* display */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .form .input {
+    /* box-model */
     width: 80%;
+    padding: 1rem .5rem;
+    border: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--gray);
+    outline: none;
+
+    /* typography */
     font-size: var(--text-primary);
     font-family: var(--font-primary);
     color: var(--color-primary);
-    padding: 1rem .5rem;
-    background: var(--white);
-    border: 0;
-    border-bottom: 1px solid var(--gray);
-    outline: none;
 }
 
 .input:focus {
@@ -50,32 +60,41 @@
 }
 
 .input__cat {
+    /* box-model */
     width: 80%;
-    font-size: var(--text-primary);
-    font-family: var(--font-primary);
-    color: var(--color-primary);
     padding: 1rem .5rem;
     background: var(--white);
     border: 0;
+
+    /* typography */
+    font-size: var(--text-primary);
+    font-family: var(--font-primary);
+    color: var(--color-primary);
 }
 
 .input__cat label {
+    /* box-model */
+    margin-right: 2rem;
+
+    /* typography */
     font-size: var(--text-primary);
     font-family: var(--font-primary);
     color: var(--color-primary);
     font-weight: 500;
-    margin-right: 2rem;
 }
 
 #category {
-    font-size: var(--text-primary);
-    font-family: var(--font-primary);
-    color: var(--color-primary);
+    /* box-model */
     padding: 1rem .5rem;
     background: var(--white);
     border: 0;
     border-bottom: 1px solid var(--gray);
     outline: none;
+
+    /* typography */
+    font-size: var(--text-primary);
+    font-family: var(--font-primary);
+    color: var(--color-primary);
 }
 
 #category:focus {

@@ -59,6 +59,7 @@ const AllProducts = () => {
         setIsSorted(!isSorted);
     }
 
+
     return (
         <div className="all__products">
             <div className='sort__tag'>

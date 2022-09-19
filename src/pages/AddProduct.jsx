@@ -47,11 +47,11 @@ const AddProduct = () => {
     if (!product.image || !product.title || !product.description || !product.category || !product.price || !product.rating.rate || !product.rating.count){
       warning('Please fill all the details');
     }else{
-      const response = await addProduct(product);
-      console.log(response);
+      // const response = await addProduct(product);
+      console.log(product);
   
-      success('Product added successfully!');
-      navigate('/');
+      // success('Product added successfully!');
+      // navigate('/');
     }
 
   }

@@ -1,35 +1,48 @@
+/* navbar css styles */
 .navbar{
+    /* box-model */
     width: 100%;
     max-width: 120rem;
     height: 10vh;
     background: var(--white);
+
+    /* display */
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-family: var(--font-primary);
-    /* border: 1px solid gray; */
+
+    /* position */
     position: fixed;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
     z-index: 5;
+
+    /* typography */
+    font-family: var(--font-primary);
 }
 
 .logo{
+    /* box-model */
+    width: 20%;
+    text-shadow: 2px 2px #d9d9d9,
+    -2px -2px  #ffffff;
+    
+    /* typography */
     font-size: var(--text-logo);
     font-family: var(--font-logo);
     color: var(--accent-color);
     font-weight: 700;
-    width: 20%;
-    text-shadow: 2px 2px #d9d9d9,
-            -2px -2px  #ffffff;
 }
 
 .menu{
+    /* box-model */
+    width: 20%;
+
+    /* display */
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 20%;
 }
 
 .menu__item{
@@ -56,7 +69,15 @@
 }
 .others{
     width: 10%;
+
+    /* display */
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+@media (max-width: 1080px){
+    .menu{
+        width: 30%;
+    }
 }

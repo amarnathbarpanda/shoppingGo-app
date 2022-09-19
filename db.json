@@ -2,14 +2,13 @@
   "products": [
     {
       "id": 1,
-      "title": "American Tourister Backpack",
-      "price": 999,
-      "description": "It comes with adjustable strap in gray color and its a water resistent backpack, 3 compartments, 1 year warrenty.",
-      "category": "accessories",
       "image": "https://m.media-amazon.com/images/I/91PZUhSoOVL._SY741_.jpg",
+      "title": "American Tourister Backpack",
+      "description": "It comes with adjustable strap in gray color and its a water resistent backpack, 3 compartments, 1 year warrenty.",
+      "price": "1899",
       "rating": {
-        "rate": 4.6,
-        "count": 309
+        "rate": "4.2",
+        "count": "3109"
       }
     },
     {
@@ -169,27 +168,37 @@
       }
     },
     {
+      "id": 16,
+      "image": "https://m.media-amazon.com/images/I/71IIdA9dlTL._SX679_.jpg",
       "title": "Nutrabay Foods Original Peanut Butter (Crunchy)",
       "description": "Nutrabay Foods Original Peanut Butter is a superfood that can be enjoyed by everyone. It helps the body grow due to its high protein and healthy fat content. It can be used as a quick snack, as a part of a healthy diet or for a child's breakfast..",
-      "image": "https://m.media-amazon.com/images/I/71IIdA9dlTL._SX679_.jpg",
-      "price": "189",
+      "price": 189,
       "rating": {
+        "rate": "3.5",
         "count": "517"
-      },
-      "category": "food",
-      "id": 16
+      }
     },
     {
+      "id": 17,
+      "image": "https://m.media-amazon.com/images/I/61WXYHK8jiS._SX679_.jpg",
       "title": "Sapphire Butter Cookies Gold Collection 400g",
       "description": "Sapphire butter cookies are baked with only the finest ingredients to ensure that you will enjoy great taste in every bite. These cookies go great paired with a cup of coffee or tea.They are the perfect cookies for festive gatherings.",
-      "image": "https://m.media-amazon.com/images/I/61WXYHK8jiS._SX679_.jpg",
-      "price": "399",
+      "price": 499,
       "rating": {
-        "rate": "3.7",
+        "rate": "4.7",
         "count": "344"
-      },
-      "category": "food",
-      "id": 17
+      }
+    },
+    {
+      "id": 18,
+      "image": "https://m.media-amazon.com/images/I/718s5Hnzt-L._SX679_.jpg",
+      "title": "Real Fruit Power Mixed Fruit Juice 1L",
+      "description": "Every Réal fruit beverage is made from the juice of best quality fruits only.Réal undergoes 108 quality tests at various checkpoints for quality, fruit goodness, taste, nutrition and food safety. Réal beverages have no added preservatives or artificial colours or artificial flavors",
+      "price": 102,
+      "rating": {
+        "rate": "4.7",
+        "count": "15104"
+      }
     }
   ]
 }

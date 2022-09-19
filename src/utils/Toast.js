@@ -1,6 +1,7 @@
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+// custom methods to show toast notifications
 export const success = (message) => {
     toast.success(message, {
         position: "top-right",

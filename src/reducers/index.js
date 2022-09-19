@@ -1,3 +1,4 @@
+import { PausePresentationTwoTone } from "@mui/icons-material";
 import { ADD_PRODUCT, ADD_TO_CART, DECREASE_QUANTITY, GET_CART_DATA, GET_CART_TOTAL, GET_PRODUCTS, INCREASE_QUANTITY, REMOVE_FROM_CART } from "../actions";
 
 const initialState = {
@@ -7,6 +8,9 @@ const initialState = {
     noOfCartItems: 0
 }
 
+//! + unary uperator is used while calculation with price to convert it from string to int as from data is by default string
+
+// here is the reducer which performs a particular task based on an action
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_PRODUCTS:
@@ -17,25 +21,26 @@ export default function reducer(state = initialState, action) {
 
         case ADD_TO_CART: {
             //if the product already present in the cart then no need to add it just increase its quantity
-
+            console.log(action.payload);
             const existingProduct = state.cart.find(elem => elem.id === action.payload.id);
 
             if (existingProduct) {
                 existingProduct.qty++;
-                existingProduct.subtotal = existingProduct.qty * existingProduct.price;
+                existingProduct.subtotal = existingProduct.qty * +(existingProduct.price);
                 localStorage.setItem('cart', JSON.stringify(state.cart));
                 return {
                     ...state,
                     noOfCartItems: state.noOfCartItems + 1,
-                    cartTotal: state.cartTotal + action.payload.price
+                    cartTotal: state.cartTotal + +(action.payload.price)
                 }
             }
 
             //if not present then add it to cart
-            const updatedCart = [...state.cart, { ...action.payload, qty: 1, subtotal: action.payload.price }];
+            const updatedCart = [...state.cart, { ...action.payload, qty: 1, subtotal: +(action.payload.price) }];
 
             localStorage.setItem('cart', JSON.stringify(updatedCart));
-            const newSubtotal = action.payload.qty * action.payload.price;
+            const newSubtotal = action.payload.qty * +(action.payload.price);
+            
             return {
                 ...state,
                 cart: [
@@ -47,7 +52,7 @@ export default function reducer(state = initialState, action) {
                     }
                 ],
                 noOfCartItems: state.noOfCartItems + 1,
-                cartTotal: state.cartTotal + action.payload.price
+                cartTotal: state.cartTotal + +(action.payload.price)
             }
         }
 
@@ -71,7 +76,7 @@ export default function reducer(state = initialState, action) {
                 state.cart.forEach(item => {
                     count += item.qty
                 });
-                
+
                 return {
                     ...state,
                     cart: cartData,
@@ -83,7 +88,7 @@ export default function reducer(state = initialState, action) {
             {
                 const updatedCart = state.cart.map((currProduct => {
                     if (currProduct.id === action.payload) {
-                        const newSubtotal = currProduct.price * (currProduct.qty + 1);
+                        const newSubtotal = +(currProduct.price) * (currProduct.qty + 1);
                         return {
                             ...currProduct,
                             qty: currProduct.qty + 1,
@@ -97,7 +102,7 @@ export default function reducer(state = initialState, action) {
                 return {
                     ...state, cart: updatedCart,
                     noOfCartItems: state.noOfCartItems + 1,
-                    cartTotal: state.cartTotal + priceToBeAdded.price
+                    cartTotal: state.cartTotal + +(priceToBeAdded.price)
                 }
             }
 
@@ -105,7 +110,7 @@ export default function reducer(state = initialState, action) {
             {
                 const updatedCart = state.cart.map((currProduct => {
                     if (currProduct.id === action.payload) {
-                        const newSubtotal = currProduct.price * (currProduct.qty - 1);
+                        const newSubtotal = +(currProduct.price) * (currProduct.qty - 1);
                         return {
                             ...currProduct,
                             qty: currProduct.qty - 1,
@@ -122,7 +127,7 @@ export default function reducer(state = initialState, action) {
                 return {
                     ...state, cart: updatedCart,
                     noOfCartItems: state.noOfCartItems - 1,
-                    cartTotal: state.cartTotal - priceToDeducted.price
+                    cartTotal: state.cartTotal - +(priceToDeducted.price)
                 }
             }
 
