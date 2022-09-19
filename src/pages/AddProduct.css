@@ -75,6 +75,7 @@
     background: var(--white);
     border: 0;
     border-bottom: 1px solid var(--gray);
+    outline: none;
 }
 
 #category:focus {

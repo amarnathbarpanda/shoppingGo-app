@@ -1,6 +1,6 @@
 
 
-const url = "https://my-json-server.typicode.com/amarnathbarpanda/ShoppingGo/products";
+const url = "http://localhost:5000/products";
 
 export const getProducts = async () =>{
    
@@ -30,3 +30,20 @@ export const addProduct = async (product) =>{
     }
 }
 
+export const deleteProduct = async (id) => {
+
+    const config = {
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        }
+    }
+
+    try {
+        const response = await fetch(`${url}/${id}`, config);
+        return response.json();
+    } catch (err) {
+        console.log(err);
+    }
+}

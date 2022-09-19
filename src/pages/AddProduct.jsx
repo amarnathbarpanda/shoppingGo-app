@@ -3,20 +3,57 @@ import { Button } from '@mui/material';
 
 import './AddProduct.css';
 import { addProduct } from '../utils/ApiUtils';
+import { success, warning } from '../utils/Toast';
+import { useNavigate } from 'react-router-dom';
 
 
 const AddProduct = () => {
 
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState({
+    id: 0,
+    image: '',
+    title: '',
+    description: '',
+    price: 0,
+    category: '',
+    rating: {
+      rate: 0,
+      count: 0
+    }
+  });
+
+  const navigate = useNavigate();
 
   const onHandleChange = (event) => {
+    if (event.target.name === 'rate' || event.target.name === 'count') {
+      setProduct({
+        ...product,
+        rating: {
+          ...product.rating,
+          [event.target.name]: event.target.value
+        }
+      });
+      return;
+    }
     setProduct({ ...product, [event.target.name]: event.target.value });
   }
 
-  const onAddProduct = async () => {
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+
     setProduct({ ...product, id: Date.now() })
-    const response = await addProduct(product);
-    console.log(response);
+
+    if (!product.image || !product.title || !product.description || !product.category || !product.price || !product.rating.rate || !product.rating.count){
+      warning('Please fill all the details');
+    }else{
+      const response = await addProduct(product);
+      console.log(response);
+  
+      success('Product added successfully!');
+      navigate('/');
+    }
+
   }
 
   return (
@@ -28,29 +65,35 @@ const AddProduct = () => {
           placeholder='Image Url'
           name="image" id=""
           onChange={(event) => onHandleChange(event)}
+          required
         />
         <input type="text"
           className="input"
           placeholder='Title'
           name="title" id=""
           onChange={(event) => onHandleChange(event)}
+          required
         />
         <input type="text"
           className="input"
           placeholder='Description'
           name="description" id=""
           onChange={(event) => onHandleChange(event)}
+          required
         />
         <input type="number"
           className="input"
           placeholder='Price'
-          name="" id=""
+          name="price" id=""
           onChange={(event) => onHandleChange(event)}
+          required
         />
         <div className="input__cat">
           <label htmlFor="category">Category: </label>
           <select id='category'
             onChange={(event) => onHandleChange(event)}
+            name='category'
+            required
           >
             <option value="accessories">Accessories</option>
             <option value="food">Food</option>
@@ -61,17 +104,20 @@ const AddProduct = () => {
         <input type="number"
           className="input"
           placeholder='Rating'
-          name="" id=""
+          min={1} max={5} step={0.5}
+          name="rate" id=""
           onChange={(event) => onHandleChange(event)}
+          required
         />
         <input type="number"
           className="input"
           placeholder='Rating count'
-          name="" id=""
+          name="count" id=""
           onChange={(event) => onHandleChange(event)}
+          required
         />
 
-        <Button sx={{ fontSize: 'var(--text-primary)', width: '80%', marginTop: '2rem' }} variant="contained" color="success" onClick={() => onAddProduct()}>Add</Button>
+        <Button type="submit" sx={{ fontSize: 'var(--text-primary)', width: '80%', marginTop: '2rem' }} variant="contained" color="success" onClick={(e) => onSubmit(e)}>Add</Button>
       </form>
     </div>
   )

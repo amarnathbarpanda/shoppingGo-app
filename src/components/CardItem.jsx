@@ -5,8 +5,9 @@ import Rating from '@mui/material/Rating';
 import { Button } from '@mui/material';
 import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart, getCartData } from '../actions';
+import { addToCart, getCartData, getProductsData } from '../actions';
 import { success } from '../utils/Toast';
+import { deleteProduct } from '../utils/ApiUtils';
 
 const CardItem = ({product}) => {
     const { id, title, description, image, price, rating: { rate, count }} = product;
@@ -16,15 +17,19 @@ const CardItem = ({product}) => {
     const cartData = useSelector(state => state.cart);
 
     const onAddToCart = (product) =>{
-        // const cartData = JSON.parse(localStorage.getItem('cart')) ?? [];
-
-        // cartData.push(product);
-
-        // localStorage.setItem('cart', JSON.stringify(cartData));
 
         dispatch(getCartData());
         dispatch(addToCart(product));
         success('Product Added to Cart!')
+    }
+
+    const onDeleteProduct = async (id) =>{
+        if(window.confirm('Do you want to delete this product?')){
+           const response = await deleteProduct(id);
+           console.log(response);
+           dispatch(getProductsData());
+           success('Product deleted successfully!')
+        }
     }
 
     return (
@@ -58,7 +63,10 @@ const CardItem = ({product}) => {
                           Add to Cart
                         </Button>
                         <EditIcon sx={styles.edit} />
-                        <DeleteIcon sx={styles.delete} />
+                        <DeleteIcon 
+                            sx={styles.delete} 
+                            onClick={()=> onDeleteProduct(product.id)}
+                        />
                     </div>
                 </div>
             </div>

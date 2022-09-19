@@ -207,7 +207,7 @@ export const data = [
         "id": 18,
         "title": "Sapphire Butter Cookies Gold Collection 400g ",
         "price": 399,
-        "description": "Sapphire butter cookies are baked with only the finest ingredients to ensure that you will enjoy great taste in every bite. These cookies go great paired with a cup of coffee or tea.They are the perfect cookies for festive gatherings.",
+        "description": "Sapphire Butter Cookies Gold Collection 400g",
         "category": "food",
         "image": "https://m.media-amazon.com/images/I/61WXYHK8jiS._SX679_.jpg",
         "rating": {

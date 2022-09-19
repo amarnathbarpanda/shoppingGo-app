@@ -23,3 +23,14 @@ export const error = (message) => {
         progress: undefined,
     });
 }
+export const warning = (message) => {
+    toast.warning(message, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
+}

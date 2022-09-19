@@ -5,7 +5,6 @@ import './AllProducts.css';
 import CardItem from './CardItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCartTotal, getProductsData } from '../actions';
-import { Typography } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 
 const AllProducts = () => {
