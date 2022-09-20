@@ -1,10 +1,12 @@
 
+// local url
+const url = "http://localhost:5000/products";
 
-// const url = "http://localhost:5000/products";
-const url = "https://shoppinggo-app.herokuapp.com/products";
+//deployed Heroku url
+// const url = "https://shoppinggo-app.herokuapp.com/products";
 
-export const getProducts = async () =>{
-   
+export const getProducts = async () => {
+
     try {
         const response = await fetch(url);
         return response.json();
@@ -13,7 +15,17 @@ export const getProducts = async () =>{
     }
 }
 
-export const addProduct = async (product) =>{
+export const getProductById = async (id) => {
+
+    try {
+        const response = await fetch(`${url}/${id}`);
+        return response.json();
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+export const addProduct = async (product) => {
     const config = {
         method: 'POST',
         headers: {

@@ -76,6 +76,9 @@
     align-items: center;
     justify-content: space-around;
 
+    /* position */
+    position: relative;
+
     /* misc */
     transition: all 0.5s;
 }

@@ -61,11 +61,10 @@
     },
     {
       "id": 6,
-      "title": "Mi Notebook Pro ",
-      "price": 1689,
-      "description": "Mi Notebook Pro QHD+ IPS Anti Glare Display Intel Core i5-11300H 11th Gen 14 inches(35.56 cms) Thin & Light Laptop (8GB/512GB SSD/Iris Xe Graphics/Windows 11/MS Office 21/Backlit KB/FP Sensor/1.4 Kg).",
-      "category": "electronics",
       "image": "https://m.media-amazon.com/images/I/71iiXU7HHkL._SX679_.jpg",
+      "title": "Mi Notebook Pro ",
+      "description": "Mi Notebook Pro QHD+ IPS Anti Glare Display Intel Core i5-11300H 11th Gen 14 inches(35.56 cms) Thin & Light Laptop (8GB/512GB SSD/Iris Xe Graphics/Windows 11/MS Office 21/Backlit KB/FP Sensor/1.4 Kg).",
+      "price": "16890",
       "rating": {
         "rate": 4.5,
         "count": 1532

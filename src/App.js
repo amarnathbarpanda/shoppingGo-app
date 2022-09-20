@@ -4,6 +4,7 @@ import './App.css';
 import { Navbar, Home } from './components';
 import AddProduct from './pages/AddProduct';
 import Cart from './pages/Cart';
+import ProductDetails from './pages/ProductDetails';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         </Routes>
         <Routes>
           <Route path='/cart' exact element={<Cart/>} />
+          <Route path='/product-details/:id' exact element={<ProductDetails/>} />
         </Routes>
       </BrowserRouter>
     </div>

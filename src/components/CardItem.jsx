@@ -6,10 +6,12 @@ import { Button } from '@mui/material';
 import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
 import SaveRoundedIcon from '@mui/icons-material/SaveRounded';
 import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
+import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, getCartData, getProductsData } from '../actions';
 import { success } from '../utils/Toast';
 import { deleteProduct, updateProduct } from '../utils/ApiUtils';
+import { useNavigate } from 'react-router-dom';
 
 const CardItem = ({ product }) => {
     const { id, title, description, image, price, rating: { rate, count } } = product;
@@ -18,11 +20,11 @@ const CardItem = ({ product }) => {
 
     const [values, setValues] = useState({});
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log(values);
     }, [edit])
 
-    useEffect(()=>{
+    useEffect(() => {
         setValues({
             id: product.id,
             image: product.image,
@@ -34,7 +36,7 @@ const CardItem = ({ product }) => {
                 count: product.rating.count
             }
         })
-    },[product])
+    }, [product])
 
     const onHandleChange = (event) => {
 
@@ -51,9 +53,9 @@ const CardItem = ({ product }) => {
 
         setValues({ ...values, [event.target.name]: event.target.value });
     }
-
+    const navigate = useNavigate();
     const dispatch = useDispatch();
-
+    
     const cartData = useSelector(state => state.cart);
 
     const onAddToCart = (product) => {
@@ -77,6 +79,10 @@ const CardItem = ({ product }) => {
         dispatch(getProductsData());
         success('Product updated successfully!');
         setEdit(false);
+    }
+
+    const onDetails = (id) =>{
+        navigate(`/product-details/${id}`);
     }
 
     return (
@@ -166,7 +172,7 @@ const CardItem = ({ product }) => {
 
                             <div className="ratings">
                                 <span>
-                                    <Rating name="half-rating-read" defaultValue={rate? rate : 0} precision={0.5} readOnly />
+                                    <Rating name="half-rating-read" defaultValue={rate ? rate : 0} precision={0.5} readOnly />
                                 </span>
                                 <span className='rating__count'>({count})</span>
                             </div>
@@ -176,6 +182,8 @@ const CardItem = ({ product }) => {
                                 {description.substr(0, 150)}...
                             </span>
                             <div className="actions">
+                                <InfoRoundedIcon titleAccess="View Product Details" sx={ styles.detail } 
+                                    onClick={() => onDetails(product.id)}/>
                                 <Button
                                     startIcon={<AddShoppingCartRoundedIcon />} variant="contained" color="success"
                                     onClick={() => onAddToCart(product)}
@@ -196,6 +204,14 @@ const CardItem = ({ product }) => {
 }
 
 const styles = {
+    detail: {
+        fontSize: '2.3rem',
+        color: 'dodgerblue',
+        cursor: 'pointer',
+        position: 'absolute',
+        top: '1rem',
+        right: '1rem'
+    },
     edit: {
         fontSize: '2.3rem',
         color: '#1D3557',

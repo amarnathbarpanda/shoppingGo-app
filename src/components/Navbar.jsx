@@ -5,7 +5,7 @@ import Badge from '@mui/material/Badge';
 
 
 import './Navbar.css';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCartData } from '../actions';
 
@@ -28,6 +28,8 @@ const Navbar = () => {
 
   const dispatch = useDispatch();
 
+  const [hamMenu, setHamMenu] = useState(false);
+
   useEffect(()=>{
     dispatch(getCartData());
   },[]);
@@ -39,10 +41,10 @@ const Navbar = () => {
       <div className='logo'>ShoppingGo</div>
       <ul className='menu'>
         <li className='menu__item'>
-          <Link to="/" >Home</Link>
+          <NavLink to="/">Home</NavLink>
         </li>
         <li className='menu__item'>
-          <Link to="/add-product" className='menu__item'>Add Product</Link>
+          <NavLink to="/add-product">Add Product</NavLink>
         </li>
       </ul>
       <div className='others'>
@@ -54,6 +56,21 @@ const Navbar = () => {
             </Link>
           </Badge>
         </div>
+      </div>
+      <div id="hamburger__menu">
+        <div id="ham__menu" className={hamMenu? 'icon': ''} onClick={()=> setHamMenu(!hamMenu)}>
+          <div id="bar1" className="bar"></div>
+          <div id="bar2" className="bar"></div>
+          <div id="bar3" className="bar"></div>
+        </div>
+        <ul className={hamMenu ? 'ham__nav show' : 'ham__nav hide'} id="ham__nav">
+          <li>
+            <NavLink to='/' onClick={() => setHamMenu(!hamMenu)}>Home</NavLink>
+          </li>
+          <li>
+            <NavLink to='/add-product' onClick={() => setHamMenu(!hamMenu)}>Add Product</NavLink>
+          </li>
+        </ul>
       </div>
     </nav>
   )
