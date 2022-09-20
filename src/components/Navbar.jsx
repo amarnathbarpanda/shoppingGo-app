@@ -5,7 +5,7 @@ import Badge from '@mui/material/Badge';
 
 
 import './Navbar.css';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCartData } from '../actions';
 
@@ -30,6 +30,7 @@ const Navbar = () => {
 
   const [hamMenu, setHamMenu] = useState(false);
 
+  const navigate = useNavigate();
   useEffect(()=>{
     dispatch(getCartData());
   },[]);
@@ -38,7 +39,7 @@ const Navbar = () => {
 
   return (
     <nav className='navbar'>
-      <div className='logo'>ShoppingGo</div>
+      <div className='logo' onClick={() => navigate('/')}>ShoppingGo</div>
       <ul className='menu'>
         <li className='menu__item'>
           <NavLink to="/">Home</NavLink>
