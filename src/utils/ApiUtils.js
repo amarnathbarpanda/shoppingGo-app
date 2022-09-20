@@ -1,7 +1,7 @@
 
 
 // const url = "http://localhost:5000/products";
-const url = "http://shoppinggo-app.herokuapp.com/products";
+const url = "https://shoppinggo-app.herokuapp.com/products";
 
 export const getProducts = async () =>{
    
