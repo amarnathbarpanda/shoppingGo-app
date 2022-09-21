@@ -35,7 +35,7 @@
 # Screenshots
   - Here are the screenshots of the App.
   ## Project Directory Structure
-  ![Directory Structure](images/Directory Structure 1.png)
+  ![Directory Structure](images/home.png)
 
 # Getting Started with Create React App
 
