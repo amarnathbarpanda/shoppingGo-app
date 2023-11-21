@@ -1,9 +1,9 @@
 
 // local url
-const url = "http://localhost:5000/products";
+// const url = "http://localhost:5000/products";
 
-//deployed Heroku url
-// const url = "https://shoppinggo-app.herokuapp.com/products";
+//deployed render url
+const url = "https://shoppinggo.onrender.com";
 
 export const getProducts = async () => {
 
