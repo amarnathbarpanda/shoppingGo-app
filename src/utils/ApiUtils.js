@@ -3,8 +3,8 @@
 // const url = "http://localhost:5000/products";
 
 //deployed render url
-const url = "https://shoppinggo.onrender.com";
-
+const url = `${process.env.REACT_APP_BASE_URL}/products`;
+console.log(process.env.REACT_APP_BASE_URL)
 export const getProducts = async () => {
 
     try {
